@@ -93,6 +93,7 @@ func Reset() error {
 		Volume: Defaults.Volume,
 	}
 
+	fmt.Println("Config reset to default.")
 	return Save(config)
 }
 

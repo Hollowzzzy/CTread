@@ -15,13 +15,15 @@ var ConfigCmd = &cobra.Command{
 
 	Run: func(cmd *cobra.Command, args []string) {
 		var err error
-
-		if len(args) == 1 {
-			err = config.Setting(args[0])
+		if args[0] != "reset" {
+			if len(args) == 1 {
+				err = config.Setting(args[0])
+			} else {
+				err = config.Setting(args[0], args[1])
+			}
 		} else {
-			err = config.Setting(args[0], args[1])
+			err = config.Reset()
 		}
-
 		if err != nil {
 			fmt.Println("Error:", err)
 		}
