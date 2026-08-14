@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 
 	"ctread/config"
@@ -9,18 +11,20 @@ import (
 var ConfigCmd = &cobra.Command{
 	Use:   "config [setting] [value]",
 	Short: "Edit the config of CTread.",
-
-	Args: cobra.RangeArgs(1, 2),
+	Args:  cobra.RangeArgs(1, 2),
 
 	Run: func(cmd *cobra.Command, args []string) {
-		setting := args[0]
+		var err error
 
 		if len(args) == 1 {
-			config.UpdateSetting(setting)
-			return
+			err = config.Setting(args[0])
+		} else {
+			err = config.Setting(args[0], args[1])
 		}
 
-		config.UpdateSetting(setting, args[1])
+		if err != nil {
+			fmt.Println("Error:", err)
+		}
 	},
 }
 
