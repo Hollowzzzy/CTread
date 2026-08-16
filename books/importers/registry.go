@@ -1,0 +1,116 @@
+package importers
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"time"
+)
+
+var registry []BookFormat
+
+type BookFormat struct {
+	Name     string
+	Path     string
+	Modified time.Time
+}
+
+func RegistryAdd(name string, path string, modified time.Time) error {
+	book := BookFormat{
+		Name:     name,
+		Path:     path,
+		Modified: modified,
+	}
+
+	registry = append(registry, book)
+
+	err := Save(registry)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func RegistryDelete(name string) error {
+	for i, book := range registry {
+		if book.Name == name {
+			registry = append(registry[:i], registry[i+1:]...)
+			break
+		}
+	}
+
+	err := Save(registry)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func RegistryClear() error {
+	registry = registry[:0]
+	fmt.Println("Registry cleared!")
+	return Save(registry)
+}
+
+func getRegistryPath() (string, error) {
+	registryDir, err := os.UserConfigDir()
+	if err != nil {
+		return "", err
+	}
+
+	appDir := filepath.Join(registryDir, "ctread")
+
+	err = os.MkdirAll(appDir, 0755)
+	if err != nil {
+		return "", err
+	}
+
+	return filepath.Join(appDir, "registry.json"), nil
+}
+
+func Save(registry []BookFormat) error {
+	registryPath, err := getRegistryPath()
+	if err != nil {
+		return err
+	}
+
+	data, err := json.MarshalIndent(registry, "", "    ")
+	if err != nil {
+		return err
+	}
+
+	return os.WriteFile(registryPath, data, 0644)
+}
+
+func Load() ([]BookFormat, error) {
+	registryPath, err := getRegistryPath()
+	if err != nil {
+		return nil, err
+	}
+
+	data, err := os.ReadFile(registryPath)
+	if os.IsNotExist(err) {
+		registry = []BookFormat{}
+
+		err = Save(registry)
+		if err != nil {
+			return nil, err
+		}
+
+		return registry, nil
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.Unmarshal(data, &registry)
+	if err != nil {
+		return nil, err
+	}
+
+	return registry, nil
+}
