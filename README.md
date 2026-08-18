@@ -1,8 +1,8 @@
-# ctread
+# CTread
 
 > A simple command-line ebook reader written in Go.
 
-**ctread** is a terminal-based reading application designed to make managing and reading ebooks directly from the command line simple.
+**CTread** is a terminal-based reading application designed to make managing and reading ebooks directly from the command line simple.
 
 [![Go](https://img.shields.io/badge/Go-1.XX-00ADD8?logo=go)](https://go.dev/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -20,9 +20,9 @@
 
 ## Demo
 
-<!-- TODO: Add a GIF showing the main ctread interface -->
+<!-- TODO: Add a GIF showing the main CTread interface -->
 
-![ctread demo](docs/gifs/main-demo.gif)
+![CTread demo](docs/gifs/main-demo.gif)
 
 ## Installation
 
@@ -31,25 +31,25 @@
 Make sure you have Go installed, then clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ctread.git
-cd ctread
+git clone https://github.com/Hollowzzzy/CTread.git
+cd CTread
 ```
 
-Build ctread:
+Build CTread:
 
 ```bash
-go build -o ctread
+go build -o CTread
 ```
 
 You can then run it with:
 
 ```bash
-./ctread
+./CTread
 ```
 
 ### Installing globally
 
-You can install ctread somewhere on your `PATH`:
+You can install CTread somewhere on your `PATH`:
 
 ```bash
 go install
@@ -58,13 +58,13 @@ go install
 Or copy the compiled binary to a directory such as:
 
 ```bash
-cp ctread /opt/homebrew/bin/ctread
+cp CTread /opt/homebrew/bin/CTread
 ```
 
 After that, you can run:
 
 ```bash
-ctread
+CTread
 ```
 
 ## Usage
@@ -72,7 +72,7 @@ ctread
 ### Import a book
 
 ```bash
-ctread import "path/to/book.epub"
+CTread import "path/to/book.epub"
 ```
 
 <!-- TODO: Add a GIF showing the import command -->
@@ -84,13 +84,13 @@ ctread import "path/to/book.epub"
 You can read a book by providing its path:
 
 ```bash
-ctread read "path/to/book.epub"
+CTread read "path/to/book.epub"
 ```
 
 If the book has been imported into the registry, you can also use its registered name:
 
 ```bash
-ctread read "Crime and Punishment"
+CTread read "Crime and Punishment"
 ```
 
 <!-- TODO: Add a GIF showing reading a book -->
@@ -100,7 +100,7 @@ ctread read "Crime and Punishment"
 ### Read a specific chapter
 
 ```bash
-ctread read "Crime and Punishment" 5
+CTread read "Crime and Punishment" 5
 ```
 
 ## Supported Formats
@@ -116,7 +116,7 @@ More formats are planned for future versions.
 A simplified overview of the project:
 
 ```text
-ctread/
+CTread/
 ├── cmd/
 │   └── ...
 ├── config/
@@ -136,7 +136,7 @@ The project is split into separate packages so that functionality such as import
 
 ## Configuration
 
-ctread stores its configuration and book registry in the user's application configuration directory.
+CTread stores its configuration and book registry in the user's application configuration directory.
 
 The registry contains information about imported books, including their names and file paths.
 
@@ -166,8 +166,8 @@ Contributions, suggestions, and bug reports are welcome.
 If you want to contribute:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ctread.git
-cd ctread
+git clone https://github.com/Hollowzzzy/CTread.git
+cd CTread
 go build
 ```
 
@@ -175,13 +175,13 @@ Make your changes, test them, and open a pull request.
 
 ## License
 
-ctread is licensed under the MIT License.
+CTread is licensed under the MIT License.
 
 See [LICENSE](LICENSE) for more information.
 
 ## Screenshots & GIFs
 
-This section can be expanded as ctread develops.
+This section can be expanded as CTread develops.
 
 <!-- TODO: Add a GIF demonstrating the full workflow -->
 
