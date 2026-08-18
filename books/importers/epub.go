@@ -2,28 +2,34 @@ package importers
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/simp-lee/epub"
 )
 
-func Epub(path string) {
+func Epub(path string, returnn bool) (*epub.Book, bool) {
 	book, err := epub.Open(path)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
+		return nil, false
 	}
-	defer book.Close()
+
+	if !returnn {
+		defer book.Close()
+	}
 
 	md := book.Metadata()
 
 	info, err := os.Stat(path)
 	if err != nil {
 		fmt.Println(err)
-		return
+		book.Close()
+		return nil, false
 	}
 
 	modified := info.ModTime()
 
 	RegistryAdd(md.Titles[0], path, modified)
+
+	return book, returnn
 }

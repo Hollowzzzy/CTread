@@ -16,6 +16,21 @@ type BookFormat struct {
 	Modified time.Time
 }
 
+func FindBook(name string) (*BookFormat, bool) {
+	_, err := Load()
+	if err != nil {
+		return nil, false
+	}
+
+	for i := range registry {
+		if registry[i].Name == name {
+			return &registry[i], true
+		}
+	}
+
+	return nil, false
+}
+
 func RegistryAdd(name string, path string, modified time.Time) error {
 	book := BookFormat{
 		Name:     name,

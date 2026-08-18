@@ -1,6 +1,6 @@
 package main
 
-import "ctread/cmd"
+import cmd "ctread/cmd/cli"
 
 func main() {
 	cmd.Execute()

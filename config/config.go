@@ -5,21 +5,22 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 )
 
 type DefaultConfig struct {
-	Theme  string `json:"theme"`
-	Volume int    `json:"volume"`
+	Theme      string `json:"theme"`
+	TuiEnabled bool   `json:"tuiEnabled"`
 }
 
 type Config struct {
-	Theme  string `json:"theme"`
-	Volume int    `json:"volume"`
+	Theme      string `json:"theme"`
+	TuiEnabled bool   `json:"tuiEnabled"`
 }
 
 var Defaults = DefaultConfig{
-	Theme:  "default",
-	Volume: 100,
+	Theme:      "default",
+	TuiEnabled: true,
 }
 
 func getConfigPath() (string, error) {
@@ -47,8 +48,8 @@ func Load() (Config, error) {
 	data, err := os.ReadFile(configPath)
 	if os.IsNotExist(err) {
 		config := Config{
-			Theme:  Defaults.Theme,
-			Volume: Defaults.Volume,
+			Theme:      Defaults.Theme,
+			TuiEnabled: Defaults.TuiEnabled,
 		}
 
 		err = Save(config)
@@ -89,8 +90,8 @@ func Save(config Config) error {
 
 func Reset() error {
 	config := Config{
-		Theme:  Defaults.Theme,
-		Volume: Defaults.Volume,
+		Theme:      Defaults.Theme,
+		TuiEnabled: Defaults.TuiEnabled,
 	}
 
 	fmt.Println("Config reset to default.")
@@ -108,8 +109,8 @@ func Setting(setting string, value ...any) error {
 		case "theme":
 			fmt.Println(config.Theme)
 
-		case "volume":
-			fmt.Println(config.Volume)
+		case "tuienabled":
+			fmt.Println(config.TuiEnabled)
 
 		default:
 			return fmt.Errorf("unknown setting: %s", setting)
@@ -122,24 +123,25 @@ func Setting(setting string, value ...any) error {
 	case "theme":
 		config.Theme = fmt.Sprint(value[0])
 
-	case "volume":
-		var volume int
+	case "tuienabled":
+		var tuiEnabled bool
 
 		switch v := value[0].(type) {
-		case int:
-			volume = v
+		case bool:
+			tuiEnabled = v
 
 		case string:
-			_, err := fmt.Sscanf(v, "%d", &volume)
+			var err error
+			tuiEnabled, err = strconv.ParseBool(v)
 			if err != nil {
-				return fmt.Errorf("volume must be a number")
+				return fmt.Errorf("tuiEnabled must be true or false")
 			}
 
 		default:
-			return fmt.Errorf("volume must be a number")
+			return fmt.Errorf("tuiEnabled must be a boolean")
 		}
 
-		config.Volume = volume
+		config.TuiEnabled = tuiEnabled
 
 	default:
 		return fmt.Errorf("unknown setting: %s", setting)

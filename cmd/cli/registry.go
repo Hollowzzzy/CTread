@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"ctread/books/importers"
+	funcc "ctread/cmd/func"
 )
 
 var RegistryCmd = &cobra.Command{
@@ -27,7 +28,7 @@ var RegistryAddCmd = &cobra.Command{
 	Short: "Add a book to the registry",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		ImportFunc(args)
+		funcc.ImportFunc(args)
 	},
 }
 
