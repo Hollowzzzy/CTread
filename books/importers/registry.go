@@ -32,6 +32,10 @@ func FindBook(name string) (*BookFormat, bool) {
 }
 
 func RegistryAdd(name string, path string, modified time.Time) error {
+	_, er := Load()
+	if er != nil {
+		return er
+	}
 	book := BookFormat{
 		Name:     name,
 		Path:     path,
