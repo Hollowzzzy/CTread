@@ -90,7 +90,7 @@ CTread read "path/to/book.epub"
 If the book has been imported into the registry, you can also use its registered name:
 
 ```bash
-CTread read "Crime and Punishment"
+CTread read "The Adventures of Sherlock Holmes"
 ```
 
 <!-- TODO: Add a GIF showing reading a book -->
@@ -100,7 +100,7 @@ CTread read "Crime and Punishment"
 ### Read a specific chapter
 
 ```bash
-CTread read "Crime and Punishment" 5
+CTread read "The Adventures of Sherlock Holmes" 5
 ```
 
 ## Supported Formats
@@ -116,19 +116,30 @@ More formats are planned for future versions.
 A simplified overview of the project:
 
 ```text
-CTread/
+ctread/
+├── books/
+│   ├── importers/
+│   │   ├── epub.go
+│   │   └── registry.go
+│   └── reader/
+│       └── reader.go
 ├── cmd/
-│   └── ...
+│   ├── cli/
+│   │   ├── config.go
+│   │   ├── import.go
+│   │   ├── read.go
+│   │   ├── registry.go
+│   │   └── root.go
+│   └── func/
+│       ├── config.go
+│       ├── import.go
+│       └── read.go
 ├── config/
-│   └── ...
-├── importers/
-│   └── ...
-├── reader/
-│   └── ...
-├── registry/
-│   └── ...
-├── main.go
+│   └── config.go
+├── .gitignore
 ├── go.mod
+├── go.sum
+├── main.go
 └── README.md
 ```
 
