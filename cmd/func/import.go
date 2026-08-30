@@ -4,6 +4,8 @@ import (
 	"ctread/books/importers"
 	"fmt"
 	"path/filepath"
+
+	Styles "ctread/lipgloss"
 )
 
 func ImportFunc(args []string, code ...bool) {
@@ -19,15 +21,18 @@ func ImportFunc(args []string, code ...bool) {
 		switch fileType {
 		case "epub":
 			if showCode {
-				fmt.Printf("Importing %s...\n", path)
+				fmt.Println(Styles.INFO.Render(fmt.Sprintf("Importing %s...", path)))
 			} else {
-				fmt.Printf("Adding %s to registry...\n", path)
+				fmt.Println(Styles.INFO.Render(fmt.Sprintf("Adding %s to registry...", path)))
 			}
 
 			importers.Epub(path, false)
 
 		default:
-			fmt.Printf("I don't know what %s is.\n", path)
+			fmt.Println(Styles.ERR.Render(fmt.Sprintf(
+				"I don't know what %s is...",
+				path,
+			)))
 		}
 	}
 }

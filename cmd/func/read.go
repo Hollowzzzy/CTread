@@ -1,16 +1,19 @@
 package functionality
 
 import (
-	"ctread/books/importers"
-	"ctread/books/reader"
 	"fmt"
 	"os"
 	"strconv"
+
+	Styles "ctread/lipgloss"
+
+	"ctread/books/importers"
+	"ctread/books/reader"
 )
 
 func ReadFunc(args []string) {
 	if len(args) < 1 {
-		fmt.Println("You must provide a book.")
+		fmt.Println(Styles.ERR.Render("You must provide a book."))
 		return
 	}
 
@@ -19,7 +22,7 @@ func ReadFunc(args []string) {
 	if _, err := os.Stat(bookPath); os.IsNotExist(err) {
 		bookInfo, found := importers.FindBook(bookPath)
 		if !found {
-			fmt.Printf("Book %q was not found.\n", bookPath)
+			fmt.Printf("%s\n", Styles.ERR.Render(fmt.Sprintf("Book %q was not found.", bookPath)))
 			return
 		}
 
@@ -34,7 +37,7 @@ func ReadFunc(args []string) {
 	} else {
 		chapter, parseErr := strconv.Atoi(args[1])
 		if parseErr != nil {
-			fmt.Printf("Invalid chapter: %q\n", args[1])
+			fmt.Printf("%s\n", Styles.ERR.Render(fmt.Sprintf("Invalid chapter: %q", args[1])))
 			return
 		}
 
@@ -42,7 +45,7 @@ func ReadFunc(args []string) {
 	}
 
 	if err != nil {
-		fmt.Printf("Failed to retrieve content: %v\n", err)
+		fmt.Printf("%s\n", Styles.ERR.Render(fmt.Sprintf("Failed to retrieve content: %v", err)))
 		return
 	}
 

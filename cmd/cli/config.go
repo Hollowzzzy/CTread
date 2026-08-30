@@ -8,7 +8,7 @@ import (
 
 var ConfigCmd = &cobra.Command{
 	Use:   "config [setting] [value]",
-	Short: "Edit the config of CTread.",
+	Short: "Edit the config of CTread. [no actual functionality yet]",
 	Args:  cobra.RangeArgs(1, 2),
 
 	Run: func(cmd *cobra.Command, args []string) {

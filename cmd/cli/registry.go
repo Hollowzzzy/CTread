@@ -7,6 +7,7 @@ import (
 
 	"ctread/books/importers"
 	funcc "ctread/cmd/func"
+	Styles "ctread/lipgloss"
 )
 
 var RegistryCmd = &cobra.Command{
@@ -15,10 +16,19 @@ var RegistryCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		registry, err := importers.Load()
 		if err != nil {
-			fmt.Println("Failed to load registry:", err)
+			fmt.Printf("%s\n", Styles.ERR.Render(fmt.Sprintf("Failed to load registry: %v", err)))
 			return
-		} else {
-			fmt.Println(registry)
+		}
+
+		if len(registry) == 0 {
+			fmt.Println(Styles.INFO.Render("The registry is empty."))
+			return
+		}
+
+		for i, book := range registry {
+			fmt.Printf("%d. %s\n", i+1, Styles.INFO.Render(book.Name))
+			fmt.Printf("   Path: %s\n", Styles.SUCCESS.Render(book.Path))
+			fmt.Printf("   Modified: %s\n\n", Styles.SUCCESS.Render(book.Modified.Format("2006-01-02 15:04:05")))
 		}
 	},
 }

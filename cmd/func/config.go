@@ -3,6 +3,8 @@ package functionality
 import (
 	"ctread/config"
 	"fmt"
+
+	Styles "ctread/lipgloss"
 )
 
 func ConfigFunc(args []string) {
@@ -17,6 +19,6 @@ func ConfigFunc(args []string) {
 		err = config.Reset()
 	}
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s\n", Styles.ERR.Render(fmt.Sprintf("Error: %v", err)))
 	}
 }
