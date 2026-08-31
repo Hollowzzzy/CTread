@@ -1,6 +1,7 @@
 package importers
 
 import (
+	Styles "ctread/lipgloss"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -53,24 +54,25 @@ func RegistryAdd(name string, path string, modified time.Time) error {
 }
 
 func RegistryDelete(name string) error {
+	Load()
 	for i, book := range registry {
 		if book.Name == name {
 			registry = append(registry[:i], registry[i+1:]...)
-			break
+
+			if err := Save(registry); err != nil {
+				return err
+			}
+
+			return nil
 		}
 	}
 
-	err := Save(registry)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return fmt.Errorf("book %q was not found in the registry", name)
 }
 
 func RegistryClear() error {
 	registry = registry[:0]
-	fmt.Println("Registry cleared!")
+	fmt.Println(Styles.INFO.Render("The registry has been cleared!"))
 	return Save(registry)
 }
 

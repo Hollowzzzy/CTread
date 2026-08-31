@@ -18,12 +18,6 @@
 * Local book registry
 * Chapter-based reading
 
-## Demo
-
-<!-- TODO: Add a GIF showing the main CTread interface -->
-
-![CTread demo](docs/gifs/main-demo.gif)
-
 ## Installation
 
 ### From source
@@ -75,9 +69,7 @@ CTread
 CTread import "path/to/book.epub"
 ```
 
-<!-- TODO: Add a GIF showing the import command -->
-
-![Importing a book](docs/gifs/import.gif)
+![Importing a book](docs/gifs/ImportDemo.gif)
 
 ### Read a book
 
@@ -93,9 +85,7 @@ If the book has been imported into the registry, you can also use its registered
 CTread read "The Adventures of Sherlock Holmes"
 ```
 
-<!-- TODO: Add a GIF showing reading a book -->
-
-![Reading a book](docs/gifs/reading.gif)
+![Reading a book](docs/gifs/ReadDemo.gif)
 
 ### Read a specific chapter
 
@@ -122,7 +112,6 @@ ctread/
 │   │   ├── epub.go
 │   │   └── registry.go
 │   └── reader/
-│       └── reader.go
 ├── cmd/
 │   ├── cli/
 │   │   ├── config.go
@@ -136,14 +125,18 @@ ctread/
 │       └── read.go
 ├── config/
 │   └── config.go
+├── docs/examples/
+│   ├── gifs/
+│   └── tapes/
+├── libpgloss/
+│   └── styles.go
 ├── .gitignore
 ├── go.mod
 ├── go.sum
+├── LICENSE
 ├── main.go
 └── README.md
 ```
-
-The project is split into separate packages so that functionality such as importing, reading, configuration, and registry management can be developed independently.
 
 ## Configuration
 
@@ -151,7 +144,7 @@ CTread stores its configuration and book registry in the user's application conf
 
 The registry contains information about imported books, including their names and file paths.
 
-<!-- TODO: Add a GIF showing configuration/settings -->
+currently there are no config settings that actually do anything but the registry does work.
 
 ![Configuration](docs/gifs/config.gif)
 
@@ -189,28 +182,6 @@ Make your changes, test them, and open a pull request.
 CTread is licensed under the MIT License.
 
 See [LICENSE](LICENSE) for more information.
-
-## Screenshots & GIFs
-
-This section can be expanded as CTread develops.
-
-<!-- TODO: Add a GIF demonstrating the full workflow -->
-
-### Full workflow
-
-![Full workflow](docs/gifs/full-workflow.gif)
-
-<!-- TODO: Add a screenshot of the library -->
-
-### Library
-
-![Library](docs/images/library.png)
-
-<!-- TODO: Add a screenshot of the reader -->
-
-### Reader
-
-![Reader](docs/images/reader.png)
 
 ---
 

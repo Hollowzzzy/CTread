@@ -47,7 +47,13 @@ var RegistryDeleteCmd = &cobra.Command{
 	Short: "Remove a book from the registry",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		importers.RegistryDelete(args[0])
+		err := importers.RegistryDelete(args[0])
+		if err != nil {
+			fmt.Println(Styles.ERR.Render(err.Error()))
+			return
+		}
+
+		fmt.Println(Styles.INFO.Render(fmt.Sprintf("%s has been successfully deleted!", args[0])))
 	},
 }
 
