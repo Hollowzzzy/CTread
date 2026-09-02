@@ -22,7 +22,7 @@ Enter
 Sleep 1s
 Type 'Using ctread to read a specific chapter of the book:'
 Ctrl+C
-Type 'ctread read "The Adventures of Sherlock Holmes" 1'
+Type 'ctread read "The Adventures of Sherlock Holmes" 4'
 Sleep 1s
 Enter
 Sleep 1s

@@ -1,8 +1,8 @@
-# CTread
+# ctread
 
 > A simple command-line ebook reader written in Go.
 
-**CTread** is a terminal-based reading application designed to make managing and reading ebooks directly from the command line simple.
+**ctread** is a terminal-based reading application designed to make managing and reading ebooks directly from the command line simple.
 
 [![Go](https://img.shields.io/badge/Go-1.XX-00ADD8?logo=go)](https://go.dev/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -25,25 +25,25 @@
 Make sure you have Go installed, then clone the repository:
 
 ```bash
-git clone https://github.com/Hollowzzzy/CTread.git
-cd CTread
+git clone https://github.com/Hollowzzzy/ctread.git
+cd ctread
 ```
 
-Build CTread:
+Build ctread:
 
 ```bash
-go build -o CTread
+go build -o ctread
 ```
 
 You can then run it with:
 
 ```bash
-./CTread
+./ctread
 ```
 
 ### Installing globally
 
-You can install CTread somewhere on your `PATH`:
+You can install ctread somewhere on your `PATH`:
 
 ```bash
 go install
@@ -52,13 +52,13 @@ go install
 Or copy the compiled binary to a directory such as:
 
 ```bash
-cp CTread /opt/homebrew/bin/CTread
+cp ctread /opt/homebrew/bin/ctread
 ```
 
 After that, you can run:
 
 ```bash
-CTread
+ctread
 ```
 
 ## Usage
@@ -66,7 +66,7 @@ CTread
 ### Import a book
 
 ```bash
-CTread import "path/to/book.epub"
+ctread import "path/to/book.epub"
 ```
 
 ![Importing a book](docs/gifs/ImportDemo.gif)
@@ -76,13 +76,13 @@ CTread import "path/to/book.epub"
 You can read a book by providing its path:
 
 ```bash
-CTread read "path/to/book.epub"
+ctread read "path/to/book.epub"
 ```
 
 If the book has been imported into the registry, you can also use its registered name:
 
 ```bash
-CTread read "The Adventures of Sherlock Holmes"
+ctread read "The Adventures of Sherlock Holmes"
 ```
 
 ![Reading a book](docs/gifs/ReadDemo.gif)
@@ -90,7 +90,7 @@ CTread read "The Adventures of Sherlock Holmes"
 ### Read a specific chapter
 
 ```bash
-CTread read "The Adventures of Sherlock Holmes" 5
+ctread read "The Adventures of Sherlock Holmes" 5
 ```
 
 ## Supported Formats
@@ -127,7 +127,13 @@ ctread/
 │   └── config.go
 ├── docs/examples/
 │   ├── gifs/
+│   │   ├── ImportDemo.gif
+│   │   ├── ReadDemo.gif
+│   │   └── RegistryDemo.gif
 │   └── tapes/
+│       ├── import.tape
+│       ├── read.tape
+│       └── registry.tape
 ├── libpgloss/
 │   └── styles.go
 ├── .gitignore
@@ -140,13 +146,11 @@ ctread/
 
 ## Configuration
 
-CTread stores its configuration and book registry in the user's application configuration directory.
+ctread stores its configuration and book registry in the user's application configuration directory.
 
 The registry contains information about imported books, including their names and file paths.
 
 currently there are no config settings that actually do anything but the registry does work.
-
-![Configuration](docs/gifs/config.gif)
 
 ## Roadmap
 
@@ -170,8 +174,8 @@ Contributions, suggestions, and bug reports are welcome.
 If you want to contribute:
 
 ```bash
-git clone https://github.com/Hollowzzzy/CTread.git
-cd CTread
+git clone https://github.com/Hollowzzzy/ctread.git
+cd ctread
 go build
 ```
 
@@ -179,7 +183,7 @@ Make your changes, test them, and open a pull request.
 
 ## License
 
-CTread is licensed under the MIT License.
+ctread is licensed under the MIT License.
 
 See [LICENSE](LICENSE) for more information.
 
