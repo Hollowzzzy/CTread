@@ -5,9 +5,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"ctread/books/importers"
-	funcc "ctread/cmd/func"
-	Styles "ctread/lipgloss"
+	"github.com/Hollowzzzy/CTread/books/importers"
+	funcc "github.com/Hollowzzzy/CTread/cmd/func"
+	Styles "github.com/Hollowzzzy/CTread/lipgloss"
 )
 
 var RegistryCmd = &cobra.Command{

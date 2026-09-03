@@ -1,10 +1,11 @@
 package functionality
 
 import (
-	"ctread/config"
 	"fmt"
 
-	Styles "ctread/lipgloss"
+	"github.com/Hollowzzzy/CTread/config"
+
+	Styles "github.com/Hollowzzzy/CTread/lipgloss"
 )
 
 func ConfigFunc(args []string) {

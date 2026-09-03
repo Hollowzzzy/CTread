@@ -1,11 +1,12 @@
 package functionality
 
 import (
-	"ctread/books/importers"
 	"fmt"
 	"path/filepath"
 
-	Styles "ctread/lipgloss"
+	"github.com/Hollowzzzy/CTread/books/importers"
+
+	Styles "github.com/Hollowzzzy/CTread/lipgloss"
 )
 
 func ImportFunc(args []string, code ...bool) {

@@ -5,10 +5,11 @@ import (
 	"os"
 	"strconv"
 
-	Styles "ctread/lipgloss"
+	Styles "github.com/Hollowzzzy/CTread/lipgloss"
 
-	"ctread/books/importers"
-	"ctread/books/reader"
+	"github.com/Hollowzzzy/CTread/books/reader"
+
+	"github.com/Hollowzzzy/CTread/books/importers"
 )
 
 func ReadFunc(args []string) {

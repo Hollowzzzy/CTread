@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	functionality "ctread/cmd/func"
+	functionality "github.com/Hollowzzzy/CTread/cmd/func"
 )
 
 var ReadCmd = &cobra.Command{

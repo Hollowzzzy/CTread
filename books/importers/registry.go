@@ -1,12 +1,13 @@
 package importers
 
 import (
-	Styles "ctread/lipgloss"
 	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"time"
+
+	Styles "github.com/Hollowzzzy/CTread/lipgloss"
 )
 
 var registry []BookFormat

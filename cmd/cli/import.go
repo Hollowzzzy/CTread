@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	funcc "ctread/cmd/func"
+	funcc "github.com/Hollowzzzy/CTread/cmd/func"
 
 	"github.com/spf13/cobra"
 )

@@ -1,4 +1,4 @@
-module ctread
+module github.com/Hollowzzzy/CTread
 
 go 1.26.5
 
