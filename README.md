@@ -112,7 +112,7 @@ dist/
 ctread import "path/to/book.epub"
 ```
 
-![Importing a book](docs/gifs/ImportDemo.gif)
+![Importing a book](docs/examples/gifs/ImportDemo.gif)
 
 ### Read a book
 
@@ -128,7 +128,7 @@ If the book has been imported into the registry, you can also use its registered
 ctread read "The Adventures of Sherlock Holmes"
 ```
 
-![Reading a book](docs/gifs/ReadDemo.gif)
+![Reading a book](docs/examples/gifs/ReadDemo.gif)
 
 ### Read a specific chapter
 
