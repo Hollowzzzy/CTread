@@ -43,13 +43,13 @@ You can then run it with:
 
 ### Installing globally
 
-You can install ctread somewhere on your `PATH`:
+You can install ctread directly using Go:
 
 ```bash
-go install
+go install github.com/Hollowzzzy/CTread@latest
 ```
 
-Or copy the compiled binary to a directory such as:
+Alternatively, you can copy a compiled binary to a directory on your `PATH`:
 
 ```bash
 cp ctread /opt/homebrew/bin/ctread
@@ -59,6 +59,49 @@ After that, you can run:
 
 ```bash
 ctread
+```
+
+## Building for multiple platforms
+
+ctread includes a `build.sh` script for building binaries for multiple operating systems and architectures.
+
+Make sure the script is executable:
+
+```bash
+chmod +x build.sh
+```
+
+Then run:
+
+```bash
+./build.sh
+```
+
+The script builds ctread for several common platforms and architectures and places the resulting binaries in the `dist/` directory.
+
+Currently supported builds include:
+
+* macOS ARM64
+* macOS AMD64
+* Linux ARM64
+* Linux AMD64
+* Windows ARM64
+* Windows AMD64
+* FreeBSD ARM64
+* FreeBSD AMD64
+
+The resulting files will look similar to:
+
+```text
+dist/
+├── ctread-darwin-arm64
+├── ctread-darwin-amd64
+├── ctread-linux-arm64
+├── ctread-linux-amd64
+├── ctread-windows-arm64.exe
+├── ctread-windows-amd64.exe
+├── ctread-freebsd-arm64
+└── ctread-freebsd-amd64
 ```
 
 ## Usage
@@ -137,6 +180,7 @@ ctread/
 ├── libpgloss/
 │   └── styles.go
 ├── .gitignore
+├── build.sh
 ├── go.mod
 ├── go.sum
 ├── LICENSE
@@ -150,7 +194,7 @@ ctread stores its configuration and book registry in the user's application conf
 
 The registry contains information about imported books, including their names and file paths.
 
-currently there are no config settings that actually do anything but the registry does work.
+Currently, there are no configuration settings that actually do anything, but the book registry does work.
 
 ## Roadmap
 
@@ -176,7 +220,19 @@ If you want to contribute:
 ```bash
 git clone https://github.com/Hollowzzzy/ctread.git
 cd ctread
+```
+
+Build the project:
+
+```bash
 go build
+```
+
+Or build binaries for multiple platforms:
+
+```bash
+chmod +x build.sh
+./build.sh
 ```
 
 Make your changes, test them, and open a pull request.
