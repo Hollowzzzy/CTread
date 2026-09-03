@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	funcc "ctread/cmd/func"
+	funcc "github.com/Hollowzzzy/CTread/cmd/func"
 )
 
 var ConfigCmd = &cobra.Command{
