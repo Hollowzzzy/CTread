@@ -114,6 +114,26 @@ ctread import "path/to/book.epub"
 
 ![Importing a book](docs/examples/gifs/ImportDemo.gif)
 
+### Registry
+
+ctread includes a local book registry that allows imported books to be opened by their registered name instead of specifying their full file path.
+
+You can view the current registry with:
+
+```bash
+ctread registry
+```
+
+![Book registry](docs/examples/gifs/RegistryDemo.gif)
+
+Once a book has been imported, you can open it using its registered name:
+
+```bash
+ctread read "The Adventures of Sherlock Holmes"
+```
+
+The registry stores the book's name and file path in ctread's local application configuration directory.
+
 ### Read a book
 
 You can read a book by providing its path:
